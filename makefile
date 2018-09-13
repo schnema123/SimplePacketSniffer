@@ -20,10 +20,14 @@ $(OBJECTS): $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 $(OUT_DIR)/$(EXE_NAME): $(OBJECTS)
 	$(CC) $(CCFLAGS) $(LIBS) $^ -o $@
 
-all: $(OUT_DIR)/$(EXE_NAME)
+all: make_dirs $(OUT_DIR)/$(EXE_NAME)
 
 run: all
 	$(OUT_DIR)/$(EXE_NAME)
+
+make_dirs:
+	mkdir -p out
+	mkdir -p obj
 
 clean:
 	-rm -f $(OUT_DIR)/*
